@@ -1,6 +1,7 @@
 {
-  "name": "test-app",
+  "name": "fabpractice2",
   "version": "0.1.0",
+  "homepage": "https://rithmer.github.io/FaBpractice2/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
