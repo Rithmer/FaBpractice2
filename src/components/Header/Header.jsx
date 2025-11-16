@@ -7,6 +7,7 @@ export default function Header({
   user,
   isUserLoggedIn,
   onOpenRegister,
+  progress,
 }) {
   return (
     <header className="header">
@@ -24,10 +25,7 @@ export default function Header({
         </button>
       )}
 
-      <ProgressHeader
-        technologies={technologies}
-        isUserLoggedIn={isUserLoggedIn}
-      />
+      <ProgressHeader progress={progress} isUserLoggedIn={isUserLoggedIn} />
     </header>
   );
 }

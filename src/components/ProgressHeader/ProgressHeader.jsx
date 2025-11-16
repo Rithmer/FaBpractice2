@@ -1,16 +1,7 @@
 import "./ProgressHeader.css";
 
-export default function ProgressHeader({ technologies, isUserLoggedIn }) {
-  const total = technologies.length;
-  const completed = technologies.filter((t) => t.status === "completed").length;
-  const inProgress = technologies.filter(
-    (t) => t.status === "in-progress"
-  ).length;
-  const notStarted = technologies.filter(
-    (t) => t.status === "not-started"
-  ).length;
-
-  const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+export default function ProgressHeader({ isUserLoggedIn, progress }) {
+  const { total, completed, inProgress, notStarted, percent } = progress;
 
   return (
     <div className="progress-header">
