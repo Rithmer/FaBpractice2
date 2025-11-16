@@ -1,0 +1,40 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fefefe;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.user-card.online {
+  border-color: #4caf50;
+}
+
+.user-card.offline {
+  border-color: #d1d5db;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.status {
+  font-size: 12px;
+  color: #6b7280;
+}
