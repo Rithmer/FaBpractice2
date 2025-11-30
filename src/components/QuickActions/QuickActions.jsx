@@ -1,47 +1,128 @@
+import React from "react";
+import {
+  ToggleButtonGroup,
+  ToggleButton,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { CheckCircle, Refresh, Casino } from "@mui/icons-material";
 import "./QuickActions.css";
 
-export default function QuickActions({
-  onMarkAll,
+function QuickActions({
+  technologies,
+  onMarkAllCompleted,
   onResetAll,
-  onExport,
-  onImport,
+  onRandomize,
+  isUserLoggedIn,
 }) {
-  const handleImportClick = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = ".json";
-    input.onchange = (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
+  const [selectedAction, setSelectedAction] = React.useState(null);
 
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        try {
-          const data = JSON.parse(event.target.result);
-          onImport(data);
-        } catch (err) {
-          console.error("Ошибка парсинга JSON", err);
+  const handleActionClick = (action) => {
+    if (!isUserLoggedIn || technologies.length === 0) return;
+
+    setSelectedAction(action);
+
+    switch (action) {
+      case "complete":
+        onMarkAllCompleted();
+        break;
+      case "reset":
+        onResetAll();
+        break;
+      case "random":
+        if (technologies.length === 0) {
+          alert("Нет технологий для случайного выбора!");
+        } else {
+          const totalTechs = technologies.length;
+          const randomCount = Math.floor(Math.random() * totalTechs) + 1;
+
+          if (
+            window.confirm(
+              `Случайный выбор изменит ${randomCount} из ${totalTechs} технологий.\nПродолжить?`
+            )
+          ) {
+            onRandomize();
+            alert(`✨ Случайно обновлены статусы ${randomCount} технологий!`);
+          }
         }
-      };
-      reader.readAsText(file);
-    };
-    input.click();
+        break;
+      default:
+        break;
+    }
+
+    setTimeout(() => setSelectedAction(null), 500);
   };
 
   return (
-    <div className="quick-actions">
-      <button className="action-btn" onClick={onMarkAll}>
-        Отметить все как выполненные
-      </button>
-      <button className="action-btn" onClick={onResetAll}>
-        Сбросить все статусы
-      </button>
-      <button className="action-btn" onClick={onExport}>
-        Экспорт данных
-      </button>
-      <button className="action-btn" onClick={handleImportClick}>
-        Импорт данных
-      </button>
-    </div>
+    <Paper
+      elevation={1}
+      sx={{
+        p: 2,
+        mb: 3,
+        backgroundColor: "background.paper",
+        borderRadius: 2,
+      }}
+    >
+      <Typography variant="subtitle1" gutterBottom sx={{ mb: 2 }}>
+        Быстрые действия
+      </Typography>
+
+      <ToggleButtonGroup
+        value={selectedAction}
+        exclusive
+        onChange={(e, action) => {
+          if (action !== null) {
+            handleActionClick(action);
+          }
+        }}
+        aria-label="quick actions"
+        sx={{
+          flexWrap: "wrap",
+          gap: 1,
+          "& .MuiToggleButton-root": {
+            margin: "4px",
+          },
+        }}
+      >
+        <ToggleButton
+          value="complete"
+          aria-label="mark all completed"
+          disabled={!isUserLoggedIn || technologies.length === 0}
+        >
+          <CheckCircle sx={{ mr: 1 }} />
+          Отметить все
+        </ToggleButton>
+
+        <ToggleButton
+          value="reset"
+          aria-label="reset all"
+          disabled={!isUserLoggedIn || technologies.length === 0}
+        >
+          <Refresh sx={{ mr: 1 }} />
+          Сбросить
+        </ToggleButton>
+
+        <ToggleButton
+          value="random"
+          aria-label="random pick"
+          disabled={!isUserLoggedIn || technologies.length === 0}
+        >
+          <Casino sx={{ mr: 1 }} />
+          Случайный выбор
+        </ToggleButton>
+      </ToggleButtonGroup>
+
+      {!isUserLoggedIn && (
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{ display: "block", mt: 2 }}
+        >
+          Авторизуйтесь, чтобы использовать быстрые действия
+        </Typography>
+      )}
+    </Paper>
   );
 }
+
+export default QuickActions;

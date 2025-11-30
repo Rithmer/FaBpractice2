@@ -1,5 +1,5 @@
-import useLocalStorage  from "./useLocalStorage";
-import {technologiesData }from "../util/technologiesData";
+import useLocalStorage from "./useLocalStorage";
+import { technologiesData } from "../util/technologiesData";
 
 function useTechnologies(isUserLoggedIn) {
   const [technologies, setTechnologies] = useLocalStorage(
@@ -7,7 +7,6 @@ function useTechnologies(isUserLoggedIn) {
     technologiesData
   );
   const [notes, setNotes] = useLocalStorage("tech-notes", {});
-
 
   const updateStatus = (id) => {
     if (!isUserLoggedIn) return;
@@ -28,12 +27,10 @@ function useTechnologies(isUserLoggedIn) {
     );
   };
 
-  
   const updateNotes = (id, text) => {
     if (!isUserLoggedIn) return;
     setNotes((prev) => ({ ...prev, [id]: text }));
   };
-
 
   const calculateProgress = () => {
     const total = technologies.length;
@@ -62,6 +59,30 @@ function useTechnologies(isUserLoggedIn) {
     setTechnologies((prev) =>
       prev.map((tech) => ({ ...tech, status: "not-started" }))
     );
+  };
+
+  const randomizeStatuses = () => {
+    if (!isUserLoggedIn) return;
+
+    setTechnologies((prev) => {
+      const totalTechs = prev.length;
+      if (totalTechs === 0) return prev;
+
+      const randomCount = Math.floor(Math.random() * totalTechs) + 1;
+
+      const shuffledIndices = [...Array(totalTechs).keys()]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, randomCount);
+
+      return prev.map((tech, index) => {
+        if (shuffledIndices.includes(index)) {
+          const randomStatus =
+            Math.random() > 0.5 ? "in-progress" : "completed";
+          return { ...tech, status: randomStatus };
+        }
+        return tech;
+      });
+    });
   };
 
   const exportData = () => {
@@ -99,6 +120,7 @@ function useTechnologies(isUserLoggedIn) {
     updateNotes,
     markAllCompleted,
     resetAllStatuses,
+    randomizeStatuses,
     exportData,
     handleImport,
     progress: calculateProgress(),

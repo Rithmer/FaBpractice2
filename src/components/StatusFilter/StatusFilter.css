@@ -1,0 +1,93 @@
+.status-filter {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.status-filter h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-btn:hover {
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+}
+
+.filter-btn.active {
+  background-color: #2196f3;
+  color: white;
+  border-color: #2196f3;
+}
+
+.filter-btn .count {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.filter-btn.active .count {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  .status-filter {
+    padding: var(--space-2);
+  }
+
+  .status-filter h3 {
+    font-size: 15px;
+  }
+
+  .filter-buttons {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-filter {
+    padding: var(--space-2);
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 14px;
+  }
+}

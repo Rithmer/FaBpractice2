@@ -7,7 +7,6 @@ export default function useLocalStorage(key, initial = {}) {
   });
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   useEffect(() => {
     if (!isLoaded) {
       setIsLoaded(true);
@@ -15,7 +14,6 @@ export default function useLocalStorage(key, initial = {}) {
     }
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value, isLoaded]);
-  
 
   return [value, setValue];
 }

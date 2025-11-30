@@ -1,0 +1,237 @@
+.technology-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--color-bg-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-2);
+}
+
+.technology-form h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: var(--color-primary);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.form-group label.required::after {
+  content: " *";
+  color: #e74c3c;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--color-muted);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s;
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-3);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #e74c3c;
+}
+
+.resource-field {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: start;
+}
+
+.resource-field input {
+  flex: 1;
+}
+
+.remove-resource {
+  padding: 10px 16px;
+  background: var(--btn-danger-bg);
+  color: var(--btn-danger-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.remove-resource:hover {
+  transform: translateY(-2px);
+}
+
+.add-resource {
+  padding: 8px 16px;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-resource:hover {
+  transform: translateY(-2px);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid var(--btn-secondary-border);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.form-validation-info {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  .technology-form {
+    padding: var(--space-3);
+    max-width: 100%;
+  }
+
+  .technology-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .resource-field {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .remove-resource {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .technology-form {
+    padding: var(--space-2);
+    border-radius: 6px;
+  }
+
+  .technology-form h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .add-resource {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .form-validation-info {
+    font-size: 13px;
+    padding: 10px;
+  }
+}

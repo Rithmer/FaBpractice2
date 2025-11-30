@@ -23,15 +23,20 @@ export default function Modal({
         </button>
         <h4>{title}</h4>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-        {links.length > 0 && (
+        {links && links.length > 0 && (
           <ul className="links-list">
-            {links.map((link, idx) => (
-              <li key={idx}>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.title}
-                </a>
-              </li>
-            ))}
+            {links.map((link, idx) => {
+              const url = typeof link === "string" ? link : link.url;
+              const title =
+                typeof link === "string" ? link : link.title || link.url;
+              return (
+                <li key={idx}>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {title}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
