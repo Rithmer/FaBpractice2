@@ -103,6 +103,15 @@ function Navigation({ isLoggedIn, username, onLogout }) {
         </li>
         <li>
           <Link
+            to="/search"
+            className={location.pathname === "/search" ? "active" : ""}
+            onClick={closeMobileMenu}
+          >
+            Поиск технологий
+          </Link>
+        </li>
+        <li>
+          <Link
             to="/dashboard"
             className={location.pathname === "/dashboard" ? "active" : ""}
             onClick={closeMobileMenu}

@@ -8,7 +8,6 @@ import Navigation from "./components/Navigation/Navigation";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Home from "./pages/Home/Home";
 import TechnologyList from "./pages/TechnologyList/TechnologyList";
-import TechnologyDetail from "./pages/TechnologyDetail/TechnologyDetail";
 import AddTechnology from "./pages/AddTechnology/AddTechnology";
 import Login from "./pages/Login/Login";
 import SearchTechnologies from "./pages/SearchTechnologies/SearchTechnologies";
@@ -85,7 +84,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/technologies" element={<TechnologyList />} />
-            <Route path="/technology/:techId" element={<TechnologyDetail />} />
             <Route
               path="/add-technology"
               element={
