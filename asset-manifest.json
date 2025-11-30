@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/FaBpractice2/static/css/main.0bf0dd05.css",
-    "main.js": "/FaBpractice2/static/js/main.8b64caad.js",
+    "main.css": "/FaBpractice2/static/css/main.ad9bfaff.css",
+    "main.js": "/FaBpractice2/static/js/main.5f7992bb.js",
     "index.html": "/FaBpractice2/index.html",
-    "main.0bf0dd05.css.map": "/FaBpractice2/static/css/main.0bf0dd05.css.map",
-    "main.8b64caad.js.map": "/FaBpractice2/static/js/main.8b64caad.js.map"
+    "main.ad9bfaff.css.map": "/FaBpractice2/static/css/main.ad9bfaff.css.map",
+    "main.5f7992bb.js.map": "/FaBpractice2/static/js/main.5f7992bb.js.map"
   },
   "entrypoints": [
-    "static/css/main.0bf0dd05.css",
-    "static/js/main.8b64caad.js"
+    "static/css/main.ad9bfaff.css",
+    "static/js/main.5f7992bb.js"
   ]
 }
